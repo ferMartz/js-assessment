@@ -8,6 +8,11 @@ asyncAnswers = {
    */
   async: function async(value) {
 
+     return new Promise((resolve, reject) => {
+            setTimeout(function(){
+            resolve(value); 
+            }, 10);
+          });
   },
 
   /**
@@ -21,6 +26,17 @@ asyncAnswers = {
    * @returns {then: function} A promise like object containing a then property.
    */
   manipulateRemoteData: function manipulateRemoteData(url) {
+
+    var def = $.Deferred();
+
+    $.ajax(url).then(function(resp) {
+      var people = $.map(resp.people, function(person) {
+        return person.name;
+      });
+      def.resolve(people.sort());
+    });
+
+    return def.promise();
 
   },
 };

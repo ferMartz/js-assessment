@@ -6,8 +6,13 @@ arraysAnswers = {
    * @param {Number} item - A number to find in arr
    * @returns {Number} The index of item in arr, or -1 if item is not in arr.
    */
+
+  
   indexOf: function indexOf(arr, item) {
     // Implement a function, that returns the 0 based index of an element in an array.
+     
+    return arr.indexOf(item); 
+
   },
 
   /**
@@ -17,6 +22,12 @@ arraysAnswers = {
    * @returns {Number} The numerical sum of all items in arr.
    */
   sum: function sum(arr) {
+    
+
+   return arr.reduce(add, 0);
+
+    function add(a,b){
+    return a+b;}
 
   },
 
@@ -29,6 +40,14 @@ arraysAnswers = {
    */
   remove: function remove(arr, item) {
 
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == item) {
+          arr.splice(i, 1);
+          i--;
+        }
+      }
+    
+    return arr;
   },
 
   /**
@@ -40,6 +59,9 @@ arraysAnswers = {
    */
   append: function append(arr, item) {
 
+    arr.push(item);    
+    return arr;
+
   },
 
   /**
@@ -50,6 +72,8 @@ arraysAnswers = {
    */
   truncate: function truncate(arr) {
 
+    arr.pop();
+    return arr;
   },
 
   /**
@@ -60,6 +84,9 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the first element item added
    */
   prepend: function prepend(arr, item) {
+
+    arr.unshift(item);
+    return arr;
 
   },
 
@@ -72,6 +99,9 @@ arraysAnswers = {
    */
   curtail: function curtail(arr) {
 
+    arr.shift();
+    return arr;
+
   },
 
   /**
@@ -82,6 +112,9 @@ arraysAnswers = {
    * @returns {Number[]} A new array, with elements from arr1 and arr2 in that order.
    */
   concat: function concat(arr1, arr2) {
+
+    var newarr = arr1.concat(arr2);
+    return newarr;
 
   },
 
@@ -95,6 +128,9 @@ arraysAnswers = {
    */
   insert: function insert(arr, item, index) {
 
+    arr.splice(index,0,item);
+    return arr;
+
   },
 
   /**
@@ -106,6 +142,12 @@ arraysAnswers = {
    */
   count: function count(arr, item) {
 
+    var frequency = arr.reduce(function (n, val) {
+      return n + (val === item);
+    }, 0);
+    
+    return frequency;
+    
   },
 
   /**
@@ -115,6 +157,23 @@ arraysAnswers = {
    * @returns {Number[]} An array of numbers that appear in arr more than once.
    */
   duplicates: function duplicates(arr) {
+
+     var sortedArr = arr.sort();
+     var count = 1;
+     var newarr = [];
+
+     for (var i = 0; i < sortedArr.length; i = i + count) {
+         count = 1;
+        for (var j = i + 1; j < sortedArr.length; j++) {
+          if (sortedArr[i] === sortedArr[j]){
+            count++;
+          }            
+        }
+
+        if(count > 1){newarr.push(sortedArr[i])}
+      }
+
+    return newarr;
 
   },
 
@@ -126,6 +185,12 @@ arraysAnswers = {
    */
   square: function square(arr) {
 
+    var sq = arr.map(function(x) {
+       return Math.pow(x, 2);
+    });
+
+    return sq;
+
   },
 
   /**
@@ -136,6 +201,17 @@ arraysAnswers = {
    * @returns {Number[]} A new array of numbers which represent the indices of target in arr.
    */
   findAllOccurrences: function findAllOccurrences(arr, target) {
+
+    var newarr = [];
+  
+    for ( var i = 0; i < arr.length; i++){
+      
+      if(arr[i] === target){
+        newarr.push(i);
+      }      
+    }
+    
+    return newarr;
 
   },
 };

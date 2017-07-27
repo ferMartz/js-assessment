@@ -11,6 +11,8 @@ functionsAnswers = {
    */
   argsAsArray: function argsAsArray(fn, arr) {
 
+   return fn.apply(this, arr);
+    
   },
 
   /**
@@ -27,6 +29,10 @@ functionsAnswers = {
    * that begins with str + ', ' + that 1 argument.
    */
   functionFunction: function functionFunction(str) {
+
+    return function aFun(val) {
+      return str + ', ' + val;
+    };
 
   },
 };

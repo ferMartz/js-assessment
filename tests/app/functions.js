@@ -9,10 +9,13 @@ describe('functions', () => {
     sayItCalled = false;
   });
 
+  // CHANGED line 15 from to.be.ok() ===> .to.be.ok because ok() function does not exist
+  // per ChaiJS Documentation (http://chaijs.com/api/bdd/)
+  // Check this link for more info: https://github.com/chaijs/chai/issues/371
   it('you should be able to use an array as arguments when calling a function', () => {
     const result = functionsAnswers.argsAsArray(sayIt, ['Hello', 'Ellie', '!']);
     expect(result).to.eql('Hello, Ellie!');
-    expect(sayItCalled).to.be.ok();
+    expect(sayItCalled).to.be.ok;
   });
 
   it('you should be able to return a function from a function', () => {

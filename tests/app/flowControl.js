@@ -5,9 +5,12 @@ describe('flow control', () => {
     while (num % 3 === 0 || num % 5 === 0) {
       num = Math.floor(Math.random() * 10) + 1;
     }
-
-    expect(flowControlAnswers.fizzBuzz()).not.to.be.ok();
-    expect(flowControlAnswers.fizzBuzz('foo')).not.to.be.ok();
+    
+    // CHANGED lines 10 & 11 from .not.to.be.ok() ===> .not.to.be.ok
+    // the ok() function does not exist per ChaiJS Documentation (http://chaijs.com/api/bdd/)
+    // Check this link for more info: https://github.com/chaijs/chai/issues/371
+    expect(flowControlAnswers.fizzBuzz()).not.to.be.ok;
+    expect(flowControlAnswers.fizzBuzz('foo')).not.to.be.ok;
     expect(flowControlAnswers.fizzBuzz(2)).to.eql(2);
     expect(flowControlAnswers.fizzBuzz(101)).to.eql(101);
 

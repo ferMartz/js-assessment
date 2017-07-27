@@ -12,6 +12,26 @@ flowControlAnswers = {
    * @returns {String} The string 'fizz', 'buzz', or 'fizzbuzz'
    */
   fizzBuzz: function fizzBuzz(num) {
+                
+      if(typeof num !== 'number'){
+        return false;
+      }
+      var result;
+      var bythree = num % 3;
+      var byfive = num % 5;
 
-  },
+      if ( bythree === 0 && byfive === 0 ){
+        return 'fizzbuzz';
+      }
+      if ( bythree != 0 && byfive != 0 ){
+        return num;
+      }
+      if ( bythree === 0 ){
+        return 'fizz';
+      }
+      if ( byfive === 0 ){
+        return 'buzz';
+      }
+  
+  }
 };

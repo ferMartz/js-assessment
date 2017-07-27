@@ -11,6 +11,9 @@ stringsAnswers = {
    */
   reduceString: function reduceString(str, amount) {
 
+     var redExpress = new RegExp("(.)(?=\\1{" + amount + "})","g");
+     return str.replace(redExpress, "");
+
   },
 
   /**
@@ -22,6 +25,8 @@ stringsAnswers = {
    * @returns {String} The original string of text str reversed.
    */
   reverseString: function reverseString(str) {
+
+    return str.split("").reverse().join("");
 
   },
 };
